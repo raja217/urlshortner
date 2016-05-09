@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.all
+    
   end
 
   # GET /urls/1
@@ -14,6 +14,7 @@ class UrlsController < ApplicationController
 
   # GET /urls/new
   def new
+    @urls = Url.all.order("created_at DESC")
     @url = Url.new
   end
 
@@ -28,7 +29,7 @@ class UrlsController < ApplicationController
 
     respond_to do |format|
       if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Url was successfully created.' }
         format.json { render :show, status: :created, location: @url }
       else
         format.html { render :new }
