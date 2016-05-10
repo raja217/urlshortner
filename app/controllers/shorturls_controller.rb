@@ -64,6 +64,8 @@ class ShorturlsController < ApplicationController
   def short
     @url = request.original_url
     originalurl = Shorturl.find_by_shorturl(@url)
+    originalurl.clicks = originalurl.clicks.to_i + 1
+    originalurl.update_attributes(:clicks =>originalurl.clicks.to_s )
     redirect_to originalurl.originalurl
   end
 

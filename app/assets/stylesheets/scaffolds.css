@@ -6,6 +6,9 @@ body, p, ol, ul, td {
   line-height: 18px;
   width: 40px;
 }
+table, th, td {
+   border: 1px solid black;
+}
 
 pre {
   background-color: #eee;
