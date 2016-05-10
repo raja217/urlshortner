@@ -1,0 +1,33 @@
+<h1>URL SHORTNER</h1>
+
+<%= render 'form' %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Shorturls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Originalurl</th>
+      <th>Shorturl</th>
+      <th>Clicks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shorturls.each do |shorturl| %>
+      <tr>
+        <td><%= shorturl.originalurl %></td>
+        <td><%= shorturl.shorturl %></td>
+        <td><%= shorturl.clicks %></td>
+        <td><%= link_to 'Show', shorturl %></td>
+        <td><%= link_to 'Edit', edit_shorturl_path(shorturl) %></td>
+        <td><%= link_to 'Destroy', shorturl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
