@@ -2,6 +2,7 @@ require 'test_helper'
 
 class UrlsControllerTest < ActionController::TestCase
   setup do
+    @request.host = "localhost"
     @url = urls(:one)
   end
 
@@ -20,7 +21,6 @@ class UrlsControllerTest < ActionController::TestCase
     assert_difference('Url.count') do
       post :create, url: { clicks: @url.clicks, originalurl: @url.originalurl, shorturl: @url.shorturl }
     end
-
     assert_redirected_to url_path(assigns(:url))
   end
 
@@ -32,11 +32,6 @@ class UrlsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @url
     assert_response :success
-  end
-
-  test "should update url" do
-    patch :update, id: @url, url: { clicks: @url.clicks, originalurl: @url.originalurl, shorturl: @url.shorturl }
-    assert_redirected_to url_path(assigns(:url))
   end
 
   test "should destroy url" do
